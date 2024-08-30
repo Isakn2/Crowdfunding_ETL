@@ -17,6 +17,8 @@ CREATE TABLE "Campaign" (
     "currency" varchar(30)   NOT NULL,
     "launch_date" date   NOT NULL,
     "end_date" date   NOT NULL,
+    "category" varchar(30)   NOT NULL,
+    "sub-category" varchar(30)   NOT NULL,
     "category_id" varchar(10)   NOT NULL,
     "subcategory_id" varchar(30)   NOT NULL,
     CONSTRAINT "pk_Campaign" PRIMARY KEY (
@@ -48,7 +50,6 @@ CREATE TABLE "Categories" (
 CREATE TABLE "Subcategories" (
     "subcategory_id" varchar(10)   NOT NULL,
     "subcategory" varchar(50)   NOT NULL,
-    "category_id" varchar(10)   NOT NULL,
     CONSTRAINT "pk_Subcategories" PRIMARY KEY (
         "subcategory_id"
      )
@@ -62,7 +63,4 @@ REFERENCES "Categories" ("category_id");
 
 ALTER TABLE "Campaign" ADD CONSTRAINT "fk_Campaign_subcategory_id" FOREIGN KEY("subcategory_id")
 REFERENCES "Subcategories" ("subcategory_id");
-
-ALTER TABLE "Subcategories" ADD CONSTRAINT "fk_Subcategories_category_id" FOREIGN KEY("category_id")
-REFERENCES "Categories" ("category_id");
 
